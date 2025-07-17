@@ -1,51 +1,51 @@
-// models/student.js
-
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-module.exports = (sequelize, DataTypes) => {
-  const Student = sequelize.define('Student', {
+const Student = sequelize.define(
+  'student',
+  {
     user_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       references: {
         model: 'user',
-        key: 'user_id'
+        key: 'user_id',
       },
       onDelete: 'CASCADE',
-      onUpdate: 'CASCADE'
+      onUpdate: 'CASCADE',
     },
     contact: {
       type: DataTypes.STRING(10),
-      allowNull: false
+      allowNull: false,
     },
     guardian_contact: {
       type: DataTypes.STRING(10),
-      allowNull: false
+      allowNull: false,
     },
     address: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     year: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     department: {
       type: DataTypes.STRING(10),
       validate: {
-        isIn: [['Comp', 'IT', 'ENTC', 'ECE', 'AIDS']]
-      }
+        isIn: [['Comp', 'IT', 'ENTC', 'ECE', 'AIDS']],
+      },
     },
     room_no: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
-    feespaid :{
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    }
-  }, {
+    feespaid: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+  },
+  {
     tableName: 'student',
-    timestamps: false
-  });
+    timestamps: false,
+  }
+);
 
-  return Student;
-};
+module.exports = Student;

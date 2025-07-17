@@ -1,5 +1,6 @@
 const {Datatypes} = require('sequelize');
 const sequelize = require('/../config/database');
+
 const room = sequelize.define('room',{
     roomid:{
         type : Datatypes.INTEGER,
