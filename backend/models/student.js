@@ -38,9 +38,13 @@ module.exports = (sequelize, DataTypes) => {
     room_no: {
       type: DataTypes.INTEGER
     },
-    feespaid :{
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
+    paymentstatus:{
+        type: DataTypes.varchar(10),
+        allownull:true,
+        validate: {
+            isIn: [['paid', 'unpaid','in progress']]
+        }
+        //defaultValue: false
     }
   }, {
     tableName: 'student',
